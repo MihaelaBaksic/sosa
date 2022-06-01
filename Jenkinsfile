@@ -3,14 +3,12 @@ pipeline{
 	stages {
 		stage('Clone'){
 			steps{
-				echo 'Cloning...'
-				sh 'pwd'
 				sh 'ls $PWD'
 			}
 		}
 		stage('Test'){
 			steps{
-				echo 'Testing'
+				sh 'python test.py'
 			}
 		}
 		stage('Deploy'){
