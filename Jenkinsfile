@@ -1,12 +1,11 @@
 pipeline{
 	agent any
 	environment {
-        TIMESTAMP = sh 'echo $(date +"%d-%m-%Y_%H:%M:%S")'
+        def TIMESTAMP = sh(script: '$(date +"%d-%m-%Y_%H:%M:%S")', returnSrdout: true).trim()
     }
 	stages {
 		stage('Prep'){
 			steps{
-				sh 'ls $PWD'
 				sh 'echo $TIMESTAMP'
 				sh 'echo $TAG_UNIXTIME'
 				sh 'echo $TAG_TIMESTAMP'
