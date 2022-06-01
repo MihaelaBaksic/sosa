@@ -4,7 +4,7 @@ pipeline{
 		stage('Prep'){
 			steps{
 				sh 'ls $PWD'
-				sh 'ls $BUILD_ID'
+				sh 'echo $BUILD_ID'
 				sh 'mkdir logs-$(date +"%d-%m-%Y-%H:%M:%S")'
 				sh 'export TIMESTAMP=$(date +"%d-%m-%Y-%H:%M:%S")'
 			}
