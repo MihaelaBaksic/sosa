@@ -6,15 +6,13 @@ pipeline{
 	stages {
 		stage('Prep'){
 			steps{
-				sh 'echo $TIMESTAMP'
-				sh 'echo $TAG_UNIXTIME'
-				sh 'echo $TAG_TIMESTAMP'
+				sh 'mkdir logs-$TIMESTAMP'
 			}
 		}
 		stage('Test'){
 			steps{
 				sh 'echo $TIMESTAMP'
-				sh 'python test.py 2>&1 | tee ./logs-$TIMESTAMP/ls.txt'
+				sh 'python test.py 2>&1 | tee ./logs-$TIMESTAMP/unittest'
 			}
 		}
 		stage('Predeploy'){
