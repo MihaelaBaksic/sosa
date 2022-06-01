@@ -1,7 +1,7 @@
 pipeline{
 	agent any
 	environment {
-        def TIMESTAMP = sh(script: '$(date +"%d-%m-%Y_%H:%M:%S")', returnStdout: true).trim()
+        def TIMESTAMP = sh(script: 'echo $(date +"%d-%m-%Y_%H:%M:%S")', returnStdout: true).trim()
     }
 	stages {
 		stage('Prep'){
