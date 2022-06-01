@@ -10,6 +10,7 @@ pipeline{
 		}
 		stage('Test'){
 			steps{
+				sh 'echo $TIMESTAMP'
 				sh 'python test.py 2>&1 | tee /logs/ls.txt'
 			}
 		}
