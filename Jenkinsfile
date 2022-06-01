@@ -5,6 +5,7 @@ pipeline{
 			steps{
 				sh 'ls $PWD'
 				sh 'mkdir logs-$(date +"%d-%m-%Y-%H:%M:%S")'
+				sh 'export TIMESTAMP=$(date +"%d-%m-%Y-%H:%M:%S")'
 			}
 		}
 		stage('Test'){
@@ -14,7 +15,7 @@ pipeline{
 		}
 		stage('Predeploy'){
 			steps{
-
+				sh 'echo $TIMESTAMP'
 			}
 		}
 		stage('Deploy'){
