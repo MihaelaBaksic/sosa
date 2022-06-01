@@ -1,7 +1,7 @@
 pipeline{
 	agent any
 	environment {
-        TIMESTAMP = $(date +"%d-%m-%Y_%H:%M:%S")
+        TIMESTAMP = sh 'echo $(date +"%d-%m-%Y_%H:%M:%S")'
     }
 	stages {
 		stage('Prep'){
