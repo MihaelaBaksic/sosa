@@ -12,7 +12,7 @@ pipeline{
 		stage('Test'){
 			steps{
 				sh 'echo $TIMESTAMP'
-				sh 'python test.py 2>&1 | tee ./logs-$TIMESTAMP/unittest > /dev/fd/2'
+				sh 'python test.py'
 			}
 		}
 		stage('Predeploy'){
