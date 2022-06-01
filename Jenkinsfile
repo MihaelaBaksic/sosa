@@ -1,14 +1,20 @@
 pipeline{
 	agent any
 	stages {
-		stage('Clone'){
+		stage('Prep'){
 			steps{
 				sh 'ls $PWD'
+				sh 'mkdir logs-$(date +"%d-%m-%Y")'
 			}
 		}
 		stage('Test'){
 			steps{
-				sh 'python test.py'
+				sh 'python test.py 2>&1 | tee /logs/ls.txt'
+			}
+		}
+		stage('Predeploy'){
+			steps{
+
 			}
 		}
 		stage('Deploy'){
