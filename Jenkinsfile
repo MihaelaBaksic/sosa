@@ -5,7 +5,7 @@ pipeline{
 			steps{
 				echo 'Cloning...'
 				sh 'pwd'
-				sh 'ls /home/mihaela/Documents/fer/2_semestar/SOSA/lab3/sosa'
+				sh 'ls $PWD'
 			}
 		}
 		stage('Test'){
