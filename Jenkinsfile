@@ -9,6 +9,8 @@ pipeline{
 				sh 'ls $PWD'
 				sh 'echo $TIMESTAMP'
 				sh 'mkdir logs-$TIMESTAMP'
+				sh 'echo $TAG_UNIXTIME'
+				sh 'echo $TAG_TIMESTAMP'
 			}
 		}
 		stage('Test'){
