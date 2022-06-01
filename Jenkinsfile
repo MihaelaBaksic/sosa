@@ -1,7 +1,7 @@
 pipeline{
 	agent any
 	environment {
-        TIMESTAMP = '$(date +"%d-%m-%Y_%H:%M:%S")'
+        TIMESTAMP = $(date +"%d-%m-%Y_%H:%M:%S")
     }
 	stages {
 		stage('Prep'){
@@ -15,7 +15,7 @@ pipeline{
 		stage('Test'){
 			steps{
 				sh 'echo $TIMESTAMP'
-				sh 'python test.py 2>&1 | tee /logs-$TIMESTAMP/ls.txt'
+				sh 'python test.py 2>&1 | tee ./logs-$TIMESTAMP/ls.txt'
 			}
 		}
 		stage('Predeploy'){
