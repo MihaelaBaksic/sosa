@@ -1,18 +1,20 @@
 pipeline{
 	agent any
+	environment {
+        TIMESTAMP = '$(date +"%d-%m-%Y_%H:%M:%S")'
+    }
 	stages {
 		stage('Prep'){
 			steps{
 				sh 'ls $PWD'
-				sh 'echo $BUILD_ID'
-				sh 'mkdir logs-$(date +"%d-%m-%Y-%H:%M:%S")'
-				sh 'export TIMESTAMP=$(date +"%d-%m-%Y-%H:%M:%S")'
+				sh 'echo $TIMESTAMP'
+				sh 'mkdir logs-$TIMESTAMP'
 			}
 		}
 		stage('Test'){
 			steps{
 				sh 'echo $TIMESTAMP'
-				sh 'python test.py 2>&1 | tee /logs/ls.txt'
+				sh 'python test.py 2>&1 | tee /logs-$TIMESTAMP/ls.txt'
 			}
 		}
 		stage('Predeploy'){
