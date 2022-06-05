@@ -1,0 +1,62 @@
+Run started:2022-06-05 23:16:50.851992
+
+Test results:
+>> Issue: [B413:blacklist] The pyCrypto library and its module AES are no longer actively maintained and have been deprecated. Consider using pyca/cryptography library.
+   Severity: High   Confidence: High
+   CWE: CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
+   Location: dodatak_A.py:6:0
+   More Info: https://bandit.readthedocs.io/en/1.7.4/blacklists/blacklist_imports.html#b413-import-pycrypto
+5	import hashlib
+6	from Crypto.Cipher import AES
+7	from Crypto.Util.Padding import pad
+
+--------------------------------------------------
+>> Issue: [B413:blacklist] The pyCrypto library and its module pad are no longer actively maintained and have been deprecated. Consider using pyca/cryptography library.
+   Severity: High   Confidence: High
+   CWE: CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
+   Location: dodatak_A.py:7:0
+   More Info: https://bandit.readthedocs.io/en/1.7.4/blacklists/blacklist_imports.html#b413-import-pycrypto
+6	from Crypto.Cipher import AES
+7	from Crypto.Util.Padding import pad
+8	
+9	class OperationsManager():
+
+--------------------------------------------------
+>> Issue: [B303:blacklist] Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+   Severity: Medium   Confidence: High
+   CWE: CWE-327 (https://cwe.mitre.org/data/definitions/327.html)
+   Location: dodatak_A.py:34:15
+   More Info: https://bandit.readthedocs.io/en/1.7.4/blacklists/blacklist_calls.html#b303-md5
+33	    def hash_user(x: str) -> str:
+34	        return hashlib.sha1(x.encode()).hexdigest()
+35	
+
+--------------------------------------------------
+>> Issue: [B105:hardcoded_password_string] Possible hardcoded password: '123'
+   Severity: Low   Confidence: Medium
+   CWE: CWE-259 (https://cwe.mitre.org/data/definitions/259.html)
+   Location: dodatak_A.py:48:37
+   More Info: https://bandit.readthedocs.io/en/1.7.4/plugins/b105_hardcoded_password_string.html
+47	    password = getpass.getpass("Password: ")
+48	    if user != "root" or password != "123":
+49	        print("Wrong username or password!")
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 45
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 1
+		Medium: 1
+		High: 2
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 1
+		High: 3
+Files skipped (0):

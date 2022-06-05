@@ -3,8 +3,7 @@ from cmath import nan
 import getpass
 import math 
 import hashlib
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad
+from cryptography.fernet import Fernet
 
 class OperationsManager():
 
@@ -34,21 +33,27 @@ class OperationsManager():
         return math.log(x)
 
     def hash_user(x: str) -> str:
-        return hashlib.sha1(x.encode()).hexdigest()
+        return hashlib.sha256(x.encode()).hexdigest()
 
     def encrypt(x: str) -> str:
         aes_key = b'Sixteen byte key'
-        cipher =  AES.new(aes_key, AES.MODE_ECB)
-        ct = cipher.encrypt(pad(x.encode(),32))
-        return ct.hex()
-        
 
+        key = Fernet.generate_key() # should be stored safely for decryption
+        f = Fernet(key)
+
+        token = f.encrypt(x.encode())
+        return token.hex()
+        
     
 
 if __name__ == "__main__":
     user = input("Username: ")
     password = getpass.getpass("Password: ")
-    if user != "root" or password != "123":
+    pass_hash_stored = None
+    with open('pass', 'r') as file:
+        pass_hash_stored = file.read().rstrip()
+
+    if user != "root" or  OperationsManager.hash_user(password) != pass_hash_stored:
         print("Wrong username or password!")
         exit(0)
     else:
