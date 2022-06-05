@@ -1,0 +1,33 @@
+.F.....EE
+======================================================================
+ERROR: test_logarithm_zero (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "test.py", line 38, in test_logarithm_zero
+    self.assertTrue(math.isnan(OperationsManager.calculate_log(0.0)))
+  File "/home/mihaela/Documents/fer/2_semestar/SOSA/lab3/sosa/dodatak_A.py", line 31, in calculate_log
+    return math.log(x)
+ValueError: math domain error
+
+======================================================================
+ERROR: test_zero_division (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "test.py", line 12, in test_zero_division
+    self.assertTrue(math.isnan(om.perform_division()))
+  File "/home/mihaela/Documents/fer/2_semestar/SOSA/lab3/sosa/dodatak_A.py", line 17, in perform_division
+    return self.a / self.b
+ZeroDivisionError: float division by zero
+
+======================================================================
+FAIL: test_circumference_one_negative (__main__.TestStringMethods)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "test.py", line 27, in test_circumference_one_negative
+    self.assertTrue(math.isnan(om.calculate_circumference()))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+FAILED (failures=1, errors=2)

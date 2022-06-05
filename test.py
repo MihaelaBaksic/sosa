@@ -1,3 +1,4 @@
+from lib2to3.pgen2.token import OP
 import math
 import unittest
 from dodatak_A import OperationsManager
@@ -39,7 +40,8 @@ class TestStringMethods(unittest.TestCase):
     def test_logarithm_negative(self):
         self.assertTrue(math.isnan(OperationsManager.calculate_log(-1)))
 
-    
+    def test_hash(self):
+        self.assertEqual(OperationsManager.hash_user('sosa'), '959d3d631fb6f17f1b07f751372041a1edb210d1')
     
     
 

@@ -14,18 +14,21 @@ class OperationsManager():
 
     def perform_division(self) -> float:
         """Divides a with b. If b is zero, returns NaN."""
+        if self.b == 0:
+            return nan
+
         return self.a / self.b
 
     def calculate_circumference(self) -> float:
         """Calculates circumference of rectangle, if a or b are negative, returns NaN"""
-        if self.a < 0 and self.b < 0:
+        if self.a < 0 or self.b < 0:
             return nan
 
         return self.a*self.b*2
 
     def calculate_log(x: float) -> float:
         """Calculate logarithm of given number, return NaN if x not positive"""
-        if x < 0:
+        if x <= 0:
             return nan
 
         return math.log(x)
